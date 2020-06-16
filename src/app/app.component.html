@@ -1,0 +1,76 @@
+<!-- Slide Menu-->
+<aside
+  class="side-menu__container"
+  [ngClass]="{ 'side-menu__container-active': showMenu }"
+  (click)="toggleMenu()"
+>
+  <nav class="side-menu" [ngClass]="{ 'side-menu-active': showMenu }">
+    (click)="$event.stopImmediatePropogation()"
+    <section class="menu-header">
+      <span class="greeting__text">Welcome Back</span>
+      <div class="profile_image__container">
+        <Img
+          src="https://avatars0.githubusercontent.com/u/17107013?s=400&u=7f9ad8283024daddb795d8112631a03b40b21a5f&v=4"
+          class="profile__image"
+          alt="profile-image"
+        />
+      </div>
+      <div class="account-details">
+        <span class="name__text"></span>
+        <span class="email__text"></span>
+      </div>
+    </section>
+
+    <section class="menu-body"></section>
+    <section class="menu-footer"></section>
+  </nav>
+</aside>
+<div class="root__container">
+  <header
+    class="main__header"
+    [ngClass]="{ 'main__header-dark': darkModeActive }"
+  >
+    <div class="left__section">
+      <svg (click)="toggleMenu()" class="hamburger__icon" id="Menu_Burger_Icon">
+        <!-- Hamburger svg icon code goes here -->
+      </svg>
+      <svg class="logo__icon">
+        <!-- logo  svg code goes here -->
+      </svg>
+    </div>
+    <h3 class="date__text">Today</h3>
+    <div class="mode_toggle__container">
+      <span class="mode-toggle__text">Light</span>
+      <label class="toggle_button__container">
+        <input
+          type="checkbox"
+          (click)="modeToggleSwitch()"
+          class="mode-toggle__input"
+        />
+        <span
+          [ngClass]="{ 'mode-toggle__bg-checked': darkModeActive }"
+          class="mode-toggle__bg"
+        ></span>
+        <span
+          [ngClass]="{ 'mode-toggle__circle-checked': darkModeActive }"
+          class="mode-toggle__circle"
+        ></span>
+      </label>
+      <span class="mode-toggle__text">Dark</span>
+    </div>
+  </header>
+  <!-- Main Content -->
+
+  <!--<router-outlet></router-outlet>-->
+  <main class="main__container">
+    <div
+      class="main-containe__bg"
+      [ngClass]="{ 'main-container__bg-dark': darkModeActive }"
+    ></div>
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="main__footer">
+    <small class="copyright__text">Copyright @2020 Mujtaba</small>
+  </footer>
+</div>
