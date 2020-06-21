@@ -7,6 +7,7 @@ import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
 import { AddCardComponent } from "./add-card/add-card.component";
 import { HttpClientModule } from "@angular/common/http";
+import { DetailsComponent } from "./details/details.component";
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { HttpClientModule } from "@angular/common/http";
     HomeComponent,
     AddCardComponent,
     WeatherCardComponent,
+    DetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
