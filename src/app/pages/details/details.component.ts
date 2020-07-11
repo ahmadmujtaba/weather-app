@@ -1,11 +1,9 @@
+import { TwitterService } from "./../../services/twitter.service";
 import { WeatherService } from "../../services/weather.service";
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subscription, Observable, forkJoin } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
 import { filter, map, concatMap } from "rxjs/operators";
-import { of } from "rxjs/index";
-import { conditionallyCreateMapObjectLiteral } from "@angular/compiler/src/render3/view/util";
-// import { takeUntil } from "rxjs/operators";
 
 @Component({
   selector: "app-details",
@@ -32,7 +30,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
   constructor(
     public activatedroute: ActivatedRoute,
-    public weather: WeatherService
+    public weather: WeatherService,
+    public twitter: TwitterService
   ) {}
 
   ngOnInit() {
@@ -104,7 +103,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
         }
       );
 
-
+    this.tweets$ = this.twitter.fetchTweets(this.city);
   }
 
   ngOnDestroy(): void {
