@@ -8,7 +8,6 @@ import { first, map } from "rxjs/operators";
   providedIn: "root",
 })
 export class WeatherService {
-
   constructor(public httpClient: HttpClient) {}
   private readonly baseUrl =
     "https://api.openweathermap.org/data/2.5/weather?q=";
@@ -17,19 +16,13 @@ export class WeatherService {
 
   private readonly appId = environment.appID;
 
-  getWeather(
-    city: string,
-    metric: "metric" | "imperial" = "metric"
-  ): Observable<any> {
+  getWeather(city: string, metric: "metric" | "imperial" = "metric") {
     return this.httpClient
       .get(`${this.baseUrl}${city}&units=${metric}&APPID=${this.appId}`)
       .pipe(first());
   }
 
-  getForcast(
-    city: string,
-    metric: "metric" | "imperial" = "metric"
-  ): Observable<any> {
+  getForcast(city: string, metric: "metric" | "imperial" = "metric") {
     return this.httpClient
       .get(`${this.forcastUrl}${city}&units=${metric}&APPID=${this.appId}`)
       .pipe(

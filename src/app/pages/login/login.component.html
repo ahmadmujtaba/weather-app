@@ -1,1 +1,46 @@
-<p>login works!</p>
+<div class="main-container">
+  <div class="login-card">
+    <main class="login-content">
+      <span class="login-header">Login</span>
+      <form class="login-form" (ngSubmit)="login($event)" #authform="ngForm">
+        <input
+          ngModel
+          type="email"
+          name="email"
+          autofocus
+          placeholder="Email"
+          class="login-input"
+          required
+        />
+        <input
+          ngModel
+          type="password"
+          name="password"
+          class="login-input"
+          minlength="6"
+          required
+        />
+
+        <input
+          type="submit"
+          name="submit"
+          value="Login"
+          [class.btn-disable]="!authform.form.valid"
+          [disabled]="!authform.form.valid"
+        />
+      </form>
+
+      <div class="signup-link-wrapper">
+        <span class="signup-notic">Don't have account?</span>
+        <a class="signup-link" routerLink="/signup">Sign up</a>
+      </div>
+
+      <aside class="login-aside">
+        <div class="login-aside-overlay"></div>
+        <h1 class="login-welcome-text">Welcom Back!</h1>
+        <hr class="login-aside-hr" />
+      </aside>
+    </main>
+  </div>
+</div>
+<app-error [message]="errorMessage"></app-error>
