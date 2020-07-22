@@ -12,7 +12,10 @@ import { LoginComponent } from "./pages/login/login.component";
 import { SignupComponent } from "./pages/signup/signup.component";
 import { AddComponent } from "./pages/add/add.component";
 import { ErrorComponent } from "./ui/error/error.component";
-
+import { AngularFireLite } from "angularfire-lite";
+import { NguiAutoCompleteModule } from "@ngui/auto-complete";
+import { environment } from "../environments/environment";
+import { ServiceWorkerModule } from "@angular/service-worker";
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +28,17 @@ import { ErrorComponent } from "./ui/error/error.component";
     AddComponent,
     ErrorComponent,
   ],
-  imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule.withServerTransition({ appId: "serverApp" }),
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    NguiAutoCompleteModule,
+    AngularFireLite.forRoot(environment.config),
+    ServiceWorkerModule.register("ngsw-worker.js", {
+      enabled: environment.production,
+    }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

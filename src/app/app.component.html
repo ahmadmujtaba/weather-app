@@ -4,47 +4,210 @@
   [ngClass]="{ 'side-menu__container-active': showMenu }"
   (click)="toggleMenu()"
 >
-  <nav class="side-menu" [ngClass]="{ 'side-menu-active': showMenu }">
-    (click)="$event.stopImmediatePropogation()"
-    <section class="menu-header">
+  <nav
+    class="slide-menu"
+    [ngClass]="{
+      'slide-menu-active': showMenu,
+      'slide-menu-active-dark': darkModeActive
+    }"
+    (click)="$event.stopImmediatePropagation()"
+  >
+    <section
+      class="menu-header"
+      [ngClass]="{ 'menu-header-dark': darkModeActive }"
+    >
       <span class="greeting__text">Welcome Back</span>
-      <div class="profile_image__container">
-        <Img
-          src="https://avatars0.githubusercontent.com/u/17107013?s=400&u=7f9ad8283024daddb795d8112631a03b40b21a5f&v=4"
-          class="profile__image"
+      <div class="profile-image__container">
+        <img
+          src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png"
           alt="profile-image"
+          class="profile__image"
         />
       </div>
       <div class="account-details">
-        <span class="name__text"></span>
-        <span class="email__text"></span>
+        <span class="name__text">{{ userEmail }}</span>
       </div>
     </section>
-
-    <section class="menu-body"></section>
-    <section class="menu-footer"></section>
+    <section class="menu-body">
+      <ul class="menu-links" [ngClass]="{ 'menu-links-dark': darkModeActive }">
+        <li
+          class="menu-link"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLink=""
+          routerLinkActive="link-active"
+          (click)="toggleMenu()"
+        >
+          Home
+        </li>
+        <li
+          class="menu-link"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLink="/add"
+          routerLinkActive="link-active"
+          (click)="toggleMenu()"
+        >
+          Add City
+        </li>
+        <li (click)="logout()" class="menu-link">Logout</li>
+      </ul>
+    </section>
+    <section class="menu-footer">
+      <small class="copyright__text">Copyright © 2019 Minimus</small>
+    </section>
   </nav>
 </aside>
-<div class="root__container">
+
+<main
+  class="root__container"
+  [ngClass]="{ 'root__container-dark': darkModeActive }"
+>
   <header
-    class="main__header"
     [ngClass]="{ 'main__header-dark': darkModeActive }"
+    class="main__header"
+    *ngIf="loggedIn | async"
   >
     <div class="left__section">
-      <svg (click)="toggleMenu()" class="hamburger__icon" id="Menu_Burger_Icon">
-        <!-- Hamburger svg icon code goes here -->
+      <svg
+        (click)="toggleMenu()"
+        class="hamburger__icon"
+        id="Menu_Burger_Icon"
+        data-name="Menu Burger Icon"
+        viewBox="31.5 30 49.9 32"
+      >
+        <defs>
+          <style>
+            .hamburger__icon__fill {
+              fill: #594e78;
+            }
+          </style>
+        </defs>
+        <rect
+          id="Rectangle_9"
+          width="49.9"
+          height="4"
+          [ngClass]="{ 'hamburger__icon__fill-dark': darkModeActive }"
+          class="hamburger__icon__fill"
+          data-name="Rectangle 9"
+          rx="2"
+          transform="translate(31.5 58)"
+        ></rect>
+        <rect
+          id="Rectangle_10"
+          width="49.9"
+          height="4"
+          [ngClass]="{ 'hamburger__icon__fill-dark': darkModeActive }"
+          class="hamburger__icon__fill"
+          data-name="Rectangle 10"
+          rx="2"
+          transform="translate(31.5 44)"
+        ></rect>
+        <rect
+          id="Rectangle_11"
+          width="49.9"
+          height="4"
+          [ngClass]="{ 'hamburger__icon__fill-dark': darkModeActive }"
+          class="hamburger__icon__fill"
+          data-name="Rectangle 11"
+          rx="2"
+          transform="translate(31.5 30)"
+        ></rect>
       </svg>
-      <svg class="logo__icon">
-        <!-- logo  svg code goes here -->
+
+      <svg
+        class="logo__icon"
+        id="Capa_1"
+        enable-background="new 0 0 506.768 506.768"
+        height="512"
+        viewBox="0 0 506.768 506.768"
+        width="512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g>
+          <circle cx="139.507" cy="128.559" fill="#fdb441" r="128.559" />
+          <g>
+            <path
+              d="m356.677 73.938c-58.498.43-108.329 37.236-128.041 88.926-1.963 5.148-7.836 7.581-12.826 5.251-11.9-5.555-25.13-8.733-39.087-8.912-52.447-.674-96.016 41.714-96.736 94.181-.732 53.38 42.304 96.873 95.484 96.873h182.242c76.62 0 138.667-62.419 138.104-139.199-.558-75.984-63.186-137.678-139.14-137.12z"
+              fill="#d7d0d6"
+            />
+          </g>
+          <path
+            d="m115.671 290.047c.72-52.467 44.289-94.855 96.736-94.181 13.957.179 27.187 3.357 39.087 8.912 4.991 2.33 10.863-.104 12.826-5.251 19.712-51.69 69.542-88.496 128.041-88.926 29.825-.219 57.592 9.148 80.356 25.222-25.009-37.531-67.838-62.239-116.04-61.884-58.498.43-108.329 37.236-128.041 88.926-1.963 5.148-7.836 7.581-12.826 5.251-11.9-5.555-25.131-8.733-39.087-8.912-52.447-.674-96.016 41.714-96.736 94.181-.491 35.782 18.686 67.119 47.401 83.893-7.672-13.986-11.952-30.097-11.717-47.231z"
+            fill="#c9bfc8"
+          />
+          <g>
+            <g>
+              <path
+                d="m74.192 506.768c-1.142 0-2.301-.262-3.389-.814-3.693-1.875-5.167-6.389-3.292-10.083l49.18-96.881c1.875-3.693 6.389-5.167 10.083-3.292 3.693 1.875 5.167 6.389 3.292 10.083l-49.18 96.881c-1.323 2.605-3.96 4.106-6.694 4.106z"
+                fill="#6bd9e7"
+              />
+            </g>
+            <g>
+              <path
+                d="m121.271 506.768c-1.142 0-2.301-.262-3.389-.814-3.693-1.875-5.167-6.389-3.292-10.083l27.315-53.807c1.875-3.694 6.389-5.168 10.083-3.292 3.693 1.875 5.167 6.389 3.292 10.083l-27.315 53.807c-1.323 2.605-3.959 4.106-6.694 4.106z"
+                fill="#6bd9e7"
+              />
+            </g>
+            <g>
+              <path
+                d="m160.432 429.625c-1.142 0-2.301-.262-3.389-.814-3.693-1.875-5.167-6.389-3.292-10.083l10.02-19.738c1.875-3.693 6.39-5.167 10.083-3.292s5.167 6.389 3.292 10.083l-10.02 19.738c-1.323 2.605-3.959 4.106-6.694 4.106z"
+                fill="#6bd9e7"
+              />
+            </g>
+            <g>
+              <path
+                d="m339.385 506.768c-1.142 0-2.301-.262-3.389-.814-3.693-1.875-5.168-6.389-3.293-10.083l49.18-96.881c1.875-3.693 6.39-5.167 10.082-3.292 3.693 1.875 5.168 6.389 3.293 10.083l-49.18 96.881c-1.322 2.605-3.959 4.106-6.693 4.106z"
+                fill="#6bd9e7"
+              />
+            </g>
+            <g>
+              <path
+                d="m386.464 506.768c-1.142 0-2.301-.262-3.389-.814-3.694-1.875-5.168-6.389-3.293-10.083l49.181-96.881c1.874-3.693 6.39-5.167 10.082-3.292 3.694 1.875 5.168 6.389 3.293 10.083l-49.181 96.881c-1.322 2.605-3.959 4.106-6.693 4.106z"
+                fill="#6bd9e7"
+              />
+            </g>
+            <path
+              d="m335.836 332.507-113.95 54.337c-2.181 1.04-2.444 4.039-.478 5.443l24.693 17.638c1.615 1.154 1.786 3.491.354 4.867l-44.975 43.223c-2.369 2.277-.138 6.211 3.032 5.346l119.331-32.545c2.565-.7 3.182-4.055 1.034-5.622l-27.535-20.078c-1.382-1.008-1.716-2.93-.754-4.345l43.237-63.62c1.817-2.675-1.069-6.037-3.989-4.644z"
+              fill="#fee45a"
+            />
+          </g>
+        </g>
       </svg>
+
+      <!-- <svg class="logo__icon" viewBox="150.3 22.2 213.7 42.8">
+        <path
+          fill="#00ff9b"
+          d="M150.3 65V22.2L193 65z"
+          data-name="Path 1"
+        ></path>
+        <path
+          fill="#003eff"
+          d="M193.1 65h-42.8L193 22.2z"
+          data-name="Path 2"
+        ></path>
+        <text
+          [ngClass]="{ 'logo__text-dark': darkModeActive }"
+          class="logo__text"
+          fill="#432c85"
+          font-family="SegoeUI-Semibold,Segoe UI"
+          font-size="30"
+          font-weight="600"
+          letter-spacing=".1em"
+          transform="translate(220 56)"
+        >
+          <tspan x="0" y="0">Minimus</tspan>
+        </text>
+      </svg> -->
     </div>
+
     <h3 class="date__text">Today</h3>
-    <div class="mode_toggle__container">
+
+    <div class="mode-toggle__container">
       <span class="mode-toggle__text">Light</span>
-      <label class="toggle_button__container">
+
+      <label class="toggle-button__container">
         <input
-          type="checkbox"
           (click)="modeToggleSwitch()"
+          type="checkbox"
           class="mode-toggle__input"
         />
         <span
@@ -56,21 +219,14 @@
           class="mode-toggle__circle"
         ></span>
       </label>
+
       <span class="mode-toggle__text">Dark</span>
     </div>
   </header>
+
   <!-- Main Content -->
 
-  <!--<router-outlet></router-outlet>-->
-  <main class="main__container">
-    <div
-      class="main-containe__bg"
-      [ngClass]="{ 'main-container__bg-dark': darkModeActive }"
-    ></div>
+  <div class="main-container__bg">
     <router-outlet></router-outlet>
-  </main>
-
-  <footer class="main__footer">
-    <small class="copyright__text">Copyright @2020 Mujtaba</small>
-  </footer>
-</div>
+  </div>
+</main>
