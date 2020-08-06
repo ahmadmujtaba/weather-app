@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  appID: "",
+  appID: "4914ac3d32180df684cbfb22b8193def",
   config: {
     apiKey: "AIzaSyAFaLuH6X3N2kuA-sla66_14H4azEFVIsE",
     authDomain: "weather-app-aa1ea.firebaseapp.com",

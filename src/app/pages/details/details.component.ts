@@ -1,4 +1,3 @@
-import { TwitterService } from "./../../services/twitter.service";
 import { WeatherService } from "../../services/weather.service";
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subscription, Observable, forkJoin } from "rxjs";
@@ -19,7 +18,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
   wind: number;
   today: string;
 
-  tweets$: Observable<any>;
   daysForecast: object;
 
   cityIllustrationPath: string;
@@ -31,7 +29,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
   constructor(
     public activatedroute: ActivatedRoute,
     public weather: WeatherService,
-    public twitter: TwitterService
   ) {}
 
   ngOnInit() {
@@ -72,7 +69,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
           this.temp = Math.ceil(Number(payload[0].main.temp));
           this.state = payload[0].weather[0].main;
           this.hum = payload[0].main.humidity;
-          this.wind = Math.round(Number(payload[0].windp.speed));
+          this.wind = Math.round(Number(payload[0].wind.speed));
 
           const dates = {};
           for (const res of payload[1]) {
@@ -103,11 +100,9 @@ export class DetailsComponent implements OnInit, OnDestroy {
         }
       );
 
-    this.tweets$ = this.twitter.fetchTweets(this.city);
   }
 
   ngOnDestroy(): void {
-    this.sub1.unsubscribe();
     this.sub2.unsubscribe();
   }
 }

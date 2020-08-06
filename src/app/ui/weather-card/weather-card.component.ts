@@ -43,8 +43,8 @@ export class WeatherCardComponent implements OnInit, OnDestroy {
       .pipe(first())
       .subscribe(
         (payload: any) => {
-          this.maxTemp = Math.round(payload.weather[0].main.temp);
-          this.minTemp = Math.round(payload.weather[0].main.temp);
+          this.maxTemp = Math.round(payload[0].main.temp);
+          this.minTemp = Math.round(payload[0].main.temp);
           for (const res of payload) {
             this.maxTemp =
               res.main.temp > this.maxTemp

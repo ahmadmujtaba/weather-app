@@ -4,7 +4,6 @@ import {
   AngularFireLiteFirestore,
 } from "angularfire-lite";
 import { switchMap, first } from "rxjs/operators";
-import { pipe } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -39,7 +38,7 @@ export class FbService {
     return this.auth.uid().pipe(
       switchMap((uid) => {
         return this.fs
-          .write(`${uid}/${cityName}`, { name, added: new Date() })
+          .write(`${uid}/${cityName}`, { cityName, added: new Date() })
           .pipe(first());
       }),
       first()

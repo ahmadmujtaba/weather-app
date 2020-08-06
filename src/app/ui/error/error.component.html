@@ -1,4 +1,4 @@
-<div class="erro-wrapper" [ngClass]="{ 'error-wrapper-active': message }">
+<div class="error-wrapper" [ngClass]="{ 'error-wrapper-active': message }">
   <span class="error-message">{{ message }}</span>
-  <button class="error-btn">{{ action }}</button>
+  <button *ngIf="message"  class="error-btn">{{ action }}</button>
 </div>

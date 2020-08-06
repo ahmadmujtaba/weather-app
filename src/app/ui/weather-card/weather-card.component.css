@@ -52,7 +52,7 @@ background: linear-gradient(to bottom, #372865, #000000);
   font-size: 3rem;
 }
 
-.min-max-ontainer {
+.min-max-container {
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr;

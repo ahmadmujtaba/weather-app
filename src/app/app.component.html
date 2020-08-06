@@ -52,7 +52,7 @@
       </ul>
     </section>
     <section class="menu-footer">
-      <small class="copyright__text">Copyright © 2019 Minimus</small>
+      <small class="copyright__text">Copyright © 2020 Ahmed Mujtaba</small>
     </section>
   </nav>
 </aside>
@@ -64,7 +64,7 @@
   <header
     [ngClass]="{ 'main__header-dark': darkModeActive }"
     class="main__header"
-    *ngIf="loggedIn | async"
+    *ngIf="showHeader"
   >
     <div class="left__section">
       <svg
@@ -194,7 +194,7 @@
           letter-spacing=".1em"
           transform="translate(220 56)"
         >
-          <tspan x="0" y="0">Minimus</tspan>
+          <tspan x="0" y="0"></tspan>
         </text>
       </svg> -->
     </div>

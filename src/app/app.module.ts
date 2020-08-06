@@ -16,6 +16,7 @@ import { AngularFireLite } from "angularfire-lite";
 import { NguiAutoCompleteModule } from "@ngui/auto-complete";
 import { environment } from "../environments/environment";
 import { ServiceWorkerModule } from "@angular/service-worker";
+
 @NgModule({
   declarations: [
     AppComponent,

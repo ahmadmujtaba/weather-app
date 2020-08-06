@@ -106,31 +106,12 @@
           <span class="twitter-feed-tag__text">#{{ city }}</span>
         </div>
         <div class="twitter-feed__body">
-          <ng-container *ngIf="tweets$ | async as tweets; else loadingTweets">
+          <ng-container>
             <p
-              *ngIf="tweets && tweets.length === 0"
               class="twitter-no-tweets__text"
             >
               No Tweets Found
             </p>
-            <div class="twitter-tweet__container" *ngFor="let tweet of tweets">
-              <div class="tweet-user__wrapper">
-                <img
-                  [src]="tweet.user.photo"
-                  alt="avatar"
-                  class="tweet-avatar__image"
-                />
-                <div>
-                  <span class="tweet-username__text">{{
-                    tweet.user.name
-                  }}</span>
-                  <span class="tweet-handle__text">{{
-                    tweet.user.handle
-                  }}</span>
-                </div>
-              </div>
-              <p class="tweet__text">{{ tweet.text }}</p>
-            </div>
           </ng-container>
 
           <ng-template #loadingTweets>
