@@ -1,4 +1,13 @@
-# WeatherApp
+# Weather App
+__Live Demo:__  https://weather-app-aa1ea.web.app/ 
+<br />
+<br />
+
+![alt text](https://github.com/ahmadmujtaba/weather-app/blob/master/1.png?raw=true)
+
+![alt text](https://github.com/ahmadmujtaba/weather-app/blob/master/2.png?raw=true)
+
+![alt text](https://github.com/ahmadmujtaba/weather-app/blob/master/3.png?raw=true)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
 
