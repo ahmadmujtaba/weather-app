@@ -18,7 +18,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   wind: number;
   today: string;
 
-  daysForecast: object;
+  daysForecast: any;
 
   cityIllustrationPath: string;
   errorMessage: string;
@@ -28,7 +28,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
   constructor(
     public activatedroute: ActivatedRoute,
-    public weather: WeatherService,
+    public weather: WeatherService
   ) {}
 
   ngOnInit() {
@@ -99,7 +99,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
           }, 2500);
         }
       );
-
   }
 
   ngOnDestroy(): void {
