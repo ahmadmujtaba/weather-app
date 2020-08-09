@@ -147,8 +147,8 @@
           </svg>
           <svg
             *ngSwitchCase="
-            day.value.state.state === 'Haze' ||
-            day.value.state.state === 'Fog'
+            day.value.state === 'Haze' ||
+            day.value.state === 'Fog'
             "
             viewBox="0 0 454 366"
           >
@@ -160,8 +160,8 @@
           <svg
             class="forecast-condition__icon"
             *ngSwitchCase="
-            day.value.state.state === 'Rain' ||
-            day.value.state.state === 'Drizzle'
+            day.value.state === 'Rain' ||
+            day.value.state === 'Drizzle'
             "
             viewBox="3170 -843.1 163.5 242.7"
           >
@@ -183,8 +183,8 @@
           <svg
             class="forecast-condition__icon"
             *ngSwitchCase="
-            day.value.state.state === 'Storm' ||
-            day.value.state.state === 'Thunderstorm'
+            day.value.state === 'Storm' ||
+            day.value.state === 'Thunderstorm'
             "
             viewBox="3487.9 -810.7 291.2 200.3"
           >
