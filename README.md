@@ -1,4 +1,4 @@
-# Weather App
+# Weather App In Angular
 __Live Demo:__  https://weather-app-aa1ea.web.app/ 
 <br />
 <br />
